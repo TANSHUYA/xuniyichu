@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手机虚拟衣柜</title>
+
+<style>
+body {
+  text-align: center;
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.avatar {
+  position: relative;
+  width: 80%;
+  max-width: 320px;
+  margin: 20px auto;
+}
+
+.person {
+  width: 100%;
+}
+
+.clothes {
+  position: absolute;
+  top: 14%;
+  left: 23%;
+  width: 60%;
+  pointer-events: none;
+}
+
+button {
+  margin: 15px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #4CAF50;
+  color: white;
+}
+
+input {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>👕 虚拟衣柜（手机版）</h1>
+
+<div class="avatar">
+  <img src="person.png" class="person">
+  <img id="clothes" class="clothes">
+</div>
+
+<button onclick="document.getElementById('upload').click()">
+  从相册选衣服
+</button>
+
+<input type="file" id="upload" accept="image/*">
+
+<script>
+const upload = document.getElementById("upload");
+const clothes = document.getElementById("clothes");
+
+upload.addEventListener("change", function () {
+  const file = this.files[0];
+  if (file) {
+    const url = URL.createObjectURL(file);
+    clothes.src = url;
+  }
+});
+</script>
+
+</body>
+</html>
